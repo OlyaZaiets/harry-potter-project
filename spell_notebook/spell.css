@@ -1,0 +1,422 @@
+body {
+    margin: 0;
+    background-color: #1a0d0d; 
+    min-height: 100vh;
+}
+
+.background-image-wrapper {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    background-attachment: fixed;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.7) contrast(1.1); 
+    object-position: center 30%;
+}
+
+.header {
+    background-color: rgba(31, 26, 23, 0.85);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    position: sticky;
+    top: 0; 
+    height: 120px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+
+.header-container {
+    display: flex;
+    height: 100%;
+}
+
+.image {
+    display: flex;
+    flex: 1;
+    align-items: center;   
+    justify-content: center;  
+}
+
+
+.image-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    transition: transform 0.4s ease;
+}
+
+.image-logo:hover {
+    transform: scale(1.08);
+    animation: glow 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 
+            0 0 15px rgba(173, 216, 230, 0.4),
+            0 0 30px rgba(173, 216, 230, 0.2),
+            0 0 50px rgba(173, 216, 230, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 0 20px rgba(173, 216, 230, 0.6),
+            0 0 35px rgba(173, 216, 230, 0.4),
+            0 0 60px rgba(173, 216, 230, 0.2);
+    }
+    100% {
+        box-shadow: 
+            0 0 15px rgba(173, 216, 230, 0.4),
+            0 0 30px rgba(173, 216, 230, 0.2),
+            0 0 50px rgba(173, 216, 230, 0.1);
+    }
+}
+
+.header-link  {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    position: relative;  
+}
+
+.header-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;              
+    height: 3px;
+    width: 100%;
+    background: rgba(255, 215, 0, 0.6); 
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    border-radius: 2px;
+}
+
+.header-link-text {
+    font-family: 'Emilys Candy', cursive;
+    font-size: 26px;
+    color: #FFD700;
+    text-decoration: none;
+    height: 100%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    width: 100%;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.header-link:hover .header-link-text {
+    color: #FFA500;
+    transform: scale(1.08);
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+}
+
+.header-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.introduction {
+    margin-bottom: 20px;
+}
+
+.introduction h2, p {
+    color: #ffffff;
+}
+
+.introduction h2 {
+    font-family: "Emilys Candy", serif;
+    font-weight: 600;
+    font-size: 46px;
+    font-style: normal;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.introduction p {
+    font-family: "Griffy", system-ui;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 26px;
+    margin: 0;
+    padding: 0 20px;
+}
+
+.search-filter-container {
+    display: flex;
+    gap: 30px;
+}
+
+.search {
+    flex: 1;
+    width: 60%;
+    position: relative;
+    display: inline-block;
+}
+
+.search-box {
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.search-box:hover {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.search-input:focus {
+    outline: none; 
+}
+
+.search-input {
+    font-family: "Autour One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    padding-right: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    width: 100%; 
+}
+
+.search-box .material-symbols-outlined {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #777;
+    pointer-events: none;
+}
+
+.search-input:focus ~ .material-symbols-outlined {
+    color: #FFD700; 
+}
+
+.search-input:focus + span {
+    color: #FFD700; 
+}
+
+.search-box:focus-within {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8); 
+    border-color: #FFD700;
+}
+
+#spell-category {
+    flex: 1;
+    font-family: "Autour One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+}
+
+#spell-category:hover {
+    border-color: #888;
+}
+
+#spell-category:focus {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    outline: none;
+}
+
+#spell-category option:hover {
+    background-color: #f0f0f0;
+}
+
+.snitch-loader {
+    padding-top: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    opacity: 1;
+    transition: opacity 0.8s ease;
+}
+
+.snitch-loader.fade-out {
+    opacity: 0;
+    pointer-events: none; 
+}
+
+.snitch {
+    position: absolute;
+    width: 50px;  
+    height: 50px;
+    animation: flySmooth 6s linear infinite;
+    z-index: 3;
+}
+
+.body {
+    width: 28px;
+    height: 28px;
+    background: radial-gradient(circle at 30% 30%, #fff8b0, #ffd700 40%, #b8860b 90%);
+    border-radius: 50%;
+    position: absolute;
+    top: 11px;
+    left: 11px;
+    box-shadow: 0 0 20px #ffd700, inset 0 0 8px rgba(255,255,255,0.6);
+}
+
+.body::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.7);
+    filter: blur(2px);
+}
+
+.wing {
+    width: 45px;              
+    height: 12px;               
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50% / 50%;
+    position: absolute;
+    top: 12px;
+    filter: drop-shadow(0 0 4px #fff);
+    opacity: 0.9;
+}
+
+.wing.left {
+    left: -37px; 
+    transform-origin: right center;
+    animation: flapLeft 0.25s infinite ease-in-out, wingFade 1.2s infinite ease-in-out;
+}
+
+.wing.right {
+    right: -37px;
+    transform-origin: left center;
+    animation: flapRight 0.25s infinite ease-in-out, wingFade 1.2s infinite ease-in-out;
+    animation-delay: 0.12s, 0.6s;
+}
+
+@keyframes flapLeft {
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(-30deg); }
+    50%  { transform: rotate(0deg); }
+    75%  { transform: rotate(30deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes flapRight {
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(30deg); }
+    50%  { transform: rotate(0deg); }
+    75%  { transform: rotate(-30deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes wingFade {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 0.6; }
+    }
+
+@keyframes flySmooth {
+    0%   { transform: translate(0px, 0px); }
+    25%  { transform: translate(120px, -50px); }
+    50%  { transform: translate(0px, -100px); }
+    75%  { transform: translate(-120px, -50px); }
+    100% { transform: translate(0px, 0px); }
+}
+
+.snitch-loader p {
+    color: #FFEC8B;
+    font-family: "Autour One", system-ui;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-top: 25px;
+    letter-spacing: 3px;
+    animation: flicker 2s infinite;
+    text-shadow: 0 0 5px #ffd700, 0 0 10px #ffea00;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.spell-cards-container {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.spell-card {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    padding: 15px;
+    background: rgba(73, 34, 15, 0.8);
+    height: 330px;
+    overflow-y: auto; 
+    border: 2px solid #ffd700; 
+    border-radius: 12px;
+    font-family: "Autour One", system-ui;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s;
+}
+
+.hidden {
+    display: none;
+}
+
+.spell-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.spell-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+}
+
+.spell-card h2 {
+    font-size: 16px;
+    margin: 10px 0;
+    color:  #f0d9a2;; 
+}
+
+.spell-card h2:first-child {
+    margin-top: 0;
+}
+.spell-card h2:last-child {
+    margin-bottom: 0;
+}
+
+.not-found-container h2 {
+    font-family: "Emilys Candy", serif;
+    font-weight: 600;
+    font-size: 46px;
+    font-style: normal;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px 0;
+}
